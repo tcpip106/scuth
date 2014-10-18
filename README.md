@@ -1,4 +1,5 @@
 scuth
 =====
 
-A simple, header-only C unit test helper 
+Simple C Unit Test Helper
+- header only
