@@ -27,7 +27,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  *
- * SCUTH provides C MACROs to assist writing unit tests for you C source code.
+ * SCUTH provides MACROs to assist writing unit tests for C source code.
  */
 #ifndef __UNIT_TEST_HELPER_H__
 #define __UNIT_TEST_HELPER_H__
@@ -43,41 +43,32 @@ extern "C" {
 #define TEST_RESULT_FAIL  -1
 
 #define TEST_CASE(whatever...) \
-    { \
-        printf("Test Case -- "); \
-        printf(whatever); \
-        printf("\n"); \
-    }
+  { \
+    printf("Test Case -- "); \
+    printf(whatever); \
+    printf("\n"); \
+  }
 
 #define TEST_PASS() \
-    { \
-        printf("-----> PASS\n"); \
-    }
+  { \
+    printf("-----> PASS\n"); \
+  }
 
 #define TEST_FAIL(whatever...) \
-    { \
-        printf("-----> FAIL : "); \
-        printf("(%s:%d)", __FILE__, __LINE__); \
-        printf(whatever); \
-        printf("\n"); \
-        exit(TEST_RESULT_FAIL); \
-    }
+  { \
+    printf("-----> FAIL : "); \
+    printf("(%s:%d)", __FILE__, __LINE__); \
+    printf(whatever); \
+    printf("\n"); \
+    exit(TEST_RESULT_FAIL); \
+  }
 
 #define TEST_ASSERT(statement) \
-    { \
-        if (!(statement)) { \
-            TEST_FAIL("Not TRUE: %s", #statement); \
-        } \
-    }
-
-#define TEST_BEGIN() \
-    { \
-    }
-
-#define TEST_END() \
-    { \
-        exit(TEST_RESULT_PASS); \
-    }
+  { \
+    if (!(statement)) { \
+      TEST_FAIL("Not TRUE: %s", #statement); \
+    } \
+  }
 
 #define TEST_MOCK(func) __wrap_##func 
 
